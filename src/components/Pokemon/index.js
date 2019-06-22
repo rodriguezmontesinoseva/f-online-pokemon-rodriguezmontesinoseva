@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './../stylesheets/index.scss';
+import './styles.scss';
 import PropTypes from 'prop-types';
 
 class Pokemon extends Component {
