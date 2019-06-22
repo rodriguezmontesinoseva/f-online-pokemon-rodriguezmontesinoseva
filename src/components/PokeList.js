@@ -5,8 +5,8 @@ import PropTypes from 'prop-types';
 
 class PokeList extends Component {
     render() {
-        const { pokData } = this.props;
-        const pokOrder = pokData.sort(function (a, b) { return a.id - b.id });
+        const { nameFilter } = this.props;
+        const pokOrder = nameFilter.sort(function (a, b) { return a.id - b.id });
         const pokList = pokOrder.map((element) => {
             return <li key={element.id}>
                 <Pokemon

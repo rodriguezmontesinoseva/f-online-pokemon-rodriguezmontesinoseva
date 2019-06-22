@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './../stylesheets/index.scss';
 import PokeList from './PokeList';
+import Filter from './Filter';
 //import { ENDPOINT } from '../services/arrPokemon'
 
 
@@ -13,8 +14,10 @@ class App extends Component {
 		this.state = {
 			pokData: [],
 			isFetching: true,
+			searchByName: ''
 
 		}
+		this.handlerSearchByName = this.handlerSearchByName.bind(this);
 
 	}
 
@@ -61,6 +64,12 @@ class App extends Component {
 
 	}
 
+	handlerSearchByName(event) {
+		const valueSearch = event.currentTarget.value;
+		this.setState({
+			searchByName: valueSearch
+		})
+	}
 
 
 
@@ -70,13 +79,30 @@ class App extends Component {
 	}
 
 	render() {
+		const nameFilter = this.state.pokData
+			.filter(element => {
+				return element.name.includes(this.state.searchByName)
+			})
+
 		return (
 			<div>
-				<h1 className="title">Mi lista de Pokemon</h1>
+				<header >
+					<h1 className="title">Pokemon</h1>
+				</header>
 
-				{this.state.isFetching
-					? <p>loading...</p>
-					: <PokeList pokData={this.state.pokData} />}
+				<main>
+					{this.state.isFetching
+						? <p>loading...</p>
+						: <PokeList
+							nameFilter={nameFilter}
+						/>
+					}
+					<Filter
+						searchByName={this.state.searchByName}
+						handlerSearchByName={this.handlerSearchByName}
+					/>
+
+				</main>
 
 			</div>
 		);
