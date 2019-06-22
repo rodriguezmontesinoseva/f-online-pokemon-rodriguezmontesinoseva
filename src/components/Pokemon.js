@@ -11,7 +11,9 @@ class Pokemon extends Component {
                     <img src={image} alt={name} />
                 </div>
                 <h2 className="item-name">{name}</h2>
-                <div className="powers">{types.map(element => <p className="item-powers">{(element).toUpperCase()}</p>)}</div>
+                {/* <div className="powers">{types.map(element => <p className="item-powers">{element}</p>)}</div>
+
+                {(element).toUpperCase()} */}
             </div>
         );
     }

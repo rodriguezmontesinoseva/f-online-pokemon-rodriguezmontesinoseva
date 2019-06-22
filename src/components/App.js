@@ -38,7 +38,7 @@ class App extends Component {
 										{
 											name: detailPk.name,
 											types: detailPk.types,
-											img: detailPk.sprites.front_default,
+											image: detailPk.sprites.front_default,
 											id: detailPk.id
 										}
 									],
@@ -74,11 +74,10 @@ class App extends Component {
 			<div>
 				<h1 className="title">Mi lista de Pokemon</h1>
 
-				{this.state.isFetching ? <p>loading...</p> : <p>array cargado</p>}
-				{console.dir(this.state.pokData)}
+				{this.state.isFetching
+					? <p>loading...</p>
+					: <PokeList pokData={this.state.pokData} />}
 
-
-				{/* <PokeList pokData={this.state.pokData} />  */}
 			</div>
 		);
 	}
