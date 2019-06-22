@@ -4,12 +4,13 @@ import PropTypes from 'prop-types';
 
 class Pokemon extends Component {
     render() {
-        const { image, name, types } = this.props;
+        const { image, name, types, id } = this.props;
         return (
             <div className="item">
                 <div className="item-image">
                     <img src={image} alt={name} />
                 </div>
+                <p>ID/{id}</p>
                 <h2 className="item-name">{name}</h2>
                 <div className="powers">{types.map(element => <p className="item-powers">{(element.type.name).toUpperCase()}</p>)}</div>
 

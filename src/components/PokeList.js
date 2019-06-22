@@ -12,6 +12,7 @@ class PokeList extends Component {
                     name={element.name}
                     image={element.image}
                     types={element.types}
+                    id={element.id}
                 />
             </li>
         });
