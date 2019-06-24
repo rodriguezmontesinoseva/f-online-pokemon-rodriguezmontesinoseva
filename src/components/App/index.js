@@ -28,13 +28,46 @@ class App extends Component {
 			//fetch(ENDPOINT)
 			.then(response => response.json())
 			.then(data => {
-				//	console.log(data);
 				const resultsPk = data.results;
-				//this.state.isFetching ? console.log('cargando') :
 				resultsPk.map(element => {
 					fetch(element.url)
 						.then(response => response.json())
 						.then(detailPk => {
+							const urlEvolution = detailPk.species.url;
+							let evolutionPk = '';
+
+							function fetchEvolution(urlEvolution) {
+								//console.log(urlEvolution);
+								fetch(urlEvolution)
+									.then(response => response.json())
+									.then(detailSecondaryPk => {
+										// detailSecondaryPk.evolves_from_species.name;
+										//console.log(`esta es la evolucion ${detailSecondaryPk.evolves_from_species.name}`);
+										//si tiene evolución retorna name, sino evolution = ''
+										// if (detailSecondaryPk.evolves_from_species.name !== null) {
+										// 	console.log(detailSecondaryPk.evolves_from_species.name);
+										// 	return detailSecondaryPk.evolves_from_species.name;
+										// } else {
+										// 	console.log('no tiene name')
+										// 	return '';
+										// }
+										//console.log(detailSecondaryPk);
+										if (detailSecondaryPk.evolves_from_species) {
+											evolutionPk = detailSecondaryPk.evolves_from_species.name;
+											//console.log(evolutionPk);
+
+
+										} else {
+											evolutionPk = '';
+										}
+										console.log(evolutionPk);
+										return evolutionPk;
+										// return detailSecondaryPk.evolves_from_species.name;
+
+									})
+							}
+
+
 							this.setState(prevState => {
 								return {
 									pokData: [
@@ -43,27 +76,42 @@ class App extends Component {
 											name: detailPk.name,
 											types: detailPk.types,
 											image: detailPk.sprites.front_default,
-											id: detailPk.id
+											id: detailPk.id,
+											evolution: fetchEvolution(urlEvolution),
+											//evolution: detailPk.species.url
+
 										}
 									],
 									isFetching: false,
-
 								}
 							})
+							// this.setState(prevState => {
+							// 	return {
+							// 		pokData: [
+							// 			...prevState.pokData,
+							// 			{
+							// 				name: detailPk.name,
+							// 				types: detailPk.types,
+							// 				image: detailPk.sprites.front_default,
+							// 				id: detailPk.id
+							// 			}
+							// 		],
+							// 		isFetching: false,
+
+							// 	}
+							// })
 
 						})
 				})
-				//	;
-				// this.setState({
-				// 	pokData: data.results,
-				// 	isFetching: false
-				// })
-
 
 			})
 
 
-	}
+	};
+
+
+
+
 
 	handlerSearchByName(event) {
 		const valueSearch = event.currentTarget.value;
