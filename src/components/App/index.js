@@ -23,60 +23,22 @@ class App extends Component {
 	}
 
 	fetchPokemon() {
-		//console.log('entra en el fetch');
 		fetch('https://pokeapi.co/api/v2/pokemon?limit=25/')
-			//fetch(ENDPOINT)
 			.then(response => response.json())
 			.then(data => {
 				const resultsPk = data.results;
 				resultsPk.map(element => {
+					// fetch2 accede a url donde están nombre, tipo, imagen,id
 					fetch(element.url)
 						.then(response => response.json())
 						.then(detailPk => {
 							const urlEvolution = detailPk.species.url;
 							let evolutionPk = '';
-
-							// function fetchEvolution(urlEvolution) {
-							// 	//console.log(urlEvolution);
-							// 	fetch(urlEvolution)
-							// 		.then(response => response.json())
-							// 		.then(detailSecondaryPk => {
-
-							// 			if (detailSecondaryPk.evolves_from_species) {
-							// 				evolutionPk = detailSecondaryPk.evolves_from_species.name;
-
-							// 			} else {
-							// 				evolutionPk = '';
-							// 			}
-							// 			console.log(evolutionPk);
-							// 			return evolutionPk;
-							// 			// return detailSecondaryPk.evolves_from_species.name;
-
-							// 		})
-							// }
-
-							// const evolut = fetch(urlEvolution)
-							// 	.then(response => response.json())
-							// 	.then(detailSecondaryPk => {
-
-							// 		if (detailSecondaryPk.evolves_from_species) {
-							// 			evolutionPk = detailSecondaryPk.evolves_from_species.name;
-
-							// 		} else {
-							// 			evolutionPk = '';
-							// 		}
-							// 		console.log(evolutionPk);
-							// 		return evolutionPk;
-							// 		// return detailSecondaryPk.evolves_from_species.name;
-
-							// 	})
-
-
-
+							// fetch3  accede a url donde están nombre de evolucion
 							fetch(urlEvolution)
 								.then(response => response.json())
 								.then(detailSecondaryPk => {
-
+									//comprueba que tiene evolucion
 									if (detailSecondaryPk.evolves_from_species) {
 										evolutionPk = detailSecondaryPk.evolves_from_species.name;
 
@@ -84,6 +46,8 @@ class App extends Component {
 										evolutionPk = '';
 									}
 									console.log(detailPk.name);
+
+									//setea detalles del 2fetch y evolucion del 3fetch
 									this.setState(prevState => {
 										return {
 											pokData: [
@@ -94,8 +58,6 @@ class App extends Component {
 													image: detailPk.sprites.front_default,
 													id: detailPk.id,
 													evolution: evolutionPk
-													//evolution: fetchEvolution(urlEvolution),
-													//evolution: detailPk.species.url
 
 												}
 											],
@@ -104,43 +66,8 @@ class App extends Component {
 										}
 									})
 
-									// return evolutionPk;
-									// return detailSecondaryPk.evolves_from_species.name;
-
-
-									// this.setState(prevState => {
-									// 	return {
-									// 		pokData: [
-									// 			...prevState.pokData,
-									// 			{
-									// 				evolution: evolutionPk,
-									// 				//evolution: fetchEvolution(urlEvolution),
-									// 				//evolution: detailPk.species.url
-
-									// 			}
-									// 		],
-									// 		isFetching: false,
-									// 	}
-									// })
-
 								})
 
-
-							// this.setState(prevState => {
-							// 	return {
-							// 		pokData: [
-							// 			...prevState.pokData,
-							// 			{
-							// 				name: detailPk.name,
-							// 				types: detailPk.types,
-							// 				image: detailPk.sprites.front_default,
-							// 				id: detailPk.id
-							// 			}
-							// 		],
-							// 		isFetching: false,
-
-							// 	}
-							// })
 
 						})
 				})
