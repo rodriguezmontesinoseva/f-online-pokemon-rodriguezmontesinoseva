@@ -9,7 +9,6 @@ class Home extends Component {
             handlerSearchByName,
             searchByName,
             nameFilter,
-            loading,
         } = this.props;
 
         return (
@@ -26,13 +25,6 @@ class Home extends Component {
                     <PokeList
                         nameFilter={nameFilter}
                     />
-                    {/* {loading
-                         ? <p>loading...</p>
-                         : <PokeList
-                             nameFilter={nameFilter}
-                         />
-                     } */}
-
                 </main>
             </div>
         );

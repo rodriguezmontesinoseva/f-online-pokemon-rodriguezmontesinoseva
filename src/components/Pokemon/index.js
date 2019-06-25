@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-
 import './styles.scss';
-//import PropTypes from 'prop-types';
 
 class Pokemon extends Component {
     render() {
@@ -31,13 +29,5 @@ class Pokemon extends Component {
         );
     }
 }
-
-// Pokemon.propTypes = {
-//     name: PropTypes.string,
-//     image: PropTypes.string,
-//     types: PropTypes.arrayOf(PropTypes.string),
-//     id: PropTypes.number,
-//     evolution: PropTypes.string
-// };
 
 export default Pokemon;

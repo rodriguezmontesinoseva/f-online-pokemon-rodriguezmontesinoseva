@@ -5,10 +5,6 @@ import { Route, Switch } from 'react-router-dom';
 import Home from '../Home';
 import Card from '../Card';
 
-// import PokeList from '../PokeList';
-// import Filter from '../Filter';
-
-
 class App extends Component {
 	constructor(props) {
 		super(props);
@@ -16,10 +12,8 @@ class App extends Component {
 			pokData: [],
 			loading: true,
 			searchByName: ''
-
 		}
 		this.handlerSearchByName = this.handlerSearchByName.bind(this);
-
 	}
 
 	fetchPokemon() {
@@ -71,12 +65,10 @@ class App extends Component {
 
 								})
 
-
 						})
 				})
 
 			})
-
 
 	};
 
@@ -119,31 +111,10 @@ class App extends Component {
 					<Card
 						match={routerProps.match}
 						pokCard={this.getCard(routerProps.match.params.id)}
-						//charactersArr={charactersArr} - hacer el find de video nasiba
 						loading={loading}
 					/>
 				} />
 			</Switch>
-
-			// <div className='page-container'>
-			// 	<header >
-			// 		<h1 className="title">Pokemon</h1>
-			// 	</header>
-
-			// 	<main className='main__container'>
-			// 		<Filter
-			// 			searchByName={this.state.searchByName}
-			// 			handlerSearchByName={this.handlerSearchByName}
-			// 		/>
-			// 		{this.state.loading
-			// 			? <p>loading...</p>
-			// 			: <PokeList
-			// 				nameFilter={nameFilter}
-			// 			/>
-			// 		}
-
-			// 	</main>
-			// </div>
 		);
 	}
 }

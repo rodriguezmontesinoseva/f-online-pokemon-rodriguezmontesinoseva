@@ -1,0 +1,73 @@
+@import '../../scss/colors';
+
+.card-container{
+    margin:20px 25px;
+    @media all and (min-width:768px) {
+        margin:20px 48px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+}
+
+.go-back{
+    text-decoration:none ;
+    color: $color-lightGrey;
+    border: solid 1px $color-lightGrey;
+    border-radius: 20%;
+    padding: 2px;
+}
+
+.card-main-container{
+    color: $color-grey;
+    margin-top:20px;
+    height: 100%;
+    border-radius: 2px;
+    box-shadow: 0px 1px 10px 5px rgba($color-grey,.2);
+};
+
+.card-data-container{
+    margin: 20px;
+}
+
+.card-image{
+    height: 30vh;
+    width:100%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: 50% 0%;
+};
+
+.card-text{
+    padding:10px;
+};
+
+.card-title{
+text-align: center;
+border-top: 2px solid $color-lightGrey;
+border-bottom: 2px solid $color-lightGrey;
+};
+
+.no-data{
+    text-align: center;
+    margin-top: 50px;    
+};
+
+
+.card-abilities{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.card-item-abilities{
+    border: solid 1px $color-mediumGrey;
+    border-radius: 9px;
+    padding: 3px;
+    margin: 6px;
+    font-size: 9px;
+    color: $color-white;
+    background-color: $color-mediumGrey;
+    font-weight: bold;
+}

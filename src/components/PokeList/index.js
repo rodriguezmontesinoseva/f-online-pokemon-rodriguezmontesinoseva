@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './styles.scss';
 import Pokemon from '../Pokemon';
-//import PropTypes from 'prop-types';
 
 class PokeList extends Component {
     render() {
@@ -28,9 +27,5 @@ class PokeList extends Component {
         );
     }
 }
-
-// PokeList.propTypes = {
-//     pokData: PropTypes.array,
-// };
 
 export default PokeList;

@@ -16,7 +16,6 @@
 .item-image-container{
     display:flex;
     justify-content: center;
-  //  margin-top: 13px;
 }
 
 .item-image{
@@ -39,6 +38,7 @@
     display:flex;
     flex-direction: row;
     justify-content: left;
+    margin-bottom: auto;
 }
 
 .item-powers{
