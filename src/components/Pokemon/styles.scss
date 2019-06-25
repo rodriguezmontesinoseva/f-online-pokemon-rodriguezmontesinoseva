@@ -3,27 +3,36 @@
 .item{
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: start;
         min-width: 130px;
         margin: 20px;
         border-radius: 2px;
         box-shadow: 0px 1px 8px 1px rgba($color-grey,.2);
+        width: 180px;
+        height: 226px;
+
+}
+
+.item-image-container{
+    display:flex;
+    justify-content: center;
+  //  margin-top: 13px;
 }
 
 .item-image{
-    display:flex;
-    justify-content: center;
-    margin-top: 13px;
+    width: 90px;
+    height: 90px;
 }
 
 .item-name{
     text-transform: capitalize;
-    border-top: 1px solid $color-grey;
-    border-bottom: 1px solid $color-grey;
+    border-top: 1px solid $color-lightGrey;
+    border-bottom: 1px solid $color-lightGrey;
     width: 100%;
     text-align: center;
     padding: 5px 0;
     margin: 10px 0;
+    color: $color-mediumGrey;
 }
 
 .powers{
@@ -33,12 +42,47 @@
 }
 
 .item-powers{
-    border: solid 1px $color-grey;
+    border: solid 1px $color-mediumGrey;
     border-radius: 9px;
     padding: 3px;
     margin: 6px;
     font-size: 9px;
     color: $color-white;
-    background-color:$color-grey;
+    background-color: $color-mediumGrey;
     font-weight: bold;
+}
+
+
+.item-id{
+    border: solid 1px $color-mediumGrey;
+    border-radius: 5px;
+    padding: 3px;
+    margin: 6px;
+    font-size: 9px;
+    color: $color-mediumGrey;
+    background-color:$color-lightGrey;
+    font-weight: bold;
+}
+
+.item-evolution{
+    font-size: 10px;
+    margin: 0;
+    color: $color-mediumGrey;
+}
+
+.link__Pokemon{
+        text-decoration-line: none;
+
+    &:link{
+        color: $color-grey;
+    }
+    &:visited{
+        color: $color-grey;
+    }
+    &:hover{
+        color: 4color-grey;
+    }
+    &:active{
+        color: $color-grey;
+    }
 }
