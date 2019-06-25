@@ -56,7 +56,11 @@ class App extends Component {
 													types: detailPk.types,
 													image: detailPk.sprites.front_default,
 													id: detailPk.id,
-													evolution: evolutionPk
+													evolution: evolutionPk,
+													height: detailPk.height,
+													weight: detailPk.weight,
+													abilities: detailPk.abilities,
+													images: detailPk.sprites
 
 												}
 											],
@@ -81,6 +85,11 @@ class App extends Component {
 		this.setState({
 			searchByName: valueSearch
 		})
+	}
+
+	getCard(id) {
+		const pokDataCard = this.state.pokData;
+		return pokDataCard.find(element => element.id === parseInt(id));
 	}
 
 	componentDidMount() {
@@ -109,6 +118,7 @@ class App extends Component {
 				<Route path='/:id' render={routerProps =>
 					<Card
 						match={routerProps.match}
+						pokCard={this.getCard(routerProps.match.params.id)}
 						//charactersArr={charactersArr} - hacer el find de video nasiba
 						loading={loading}
 					/>
