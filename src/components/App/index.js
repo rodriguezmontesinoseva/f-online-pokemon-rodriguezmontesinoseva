@@ -90,6 +90,7 @@ class App extends Component {
 	render() {
 		const handlerSearchByName = this.handlerSearchByName;
 		const searchByName = this.state.searchByName;
+		const loading = this.state.loading;
 		const nameFilter = this.state.pokData
 			.filter(element => {
 				return element.name.includes(this.state.searchByName)
@@ -102,13 +103,14 @@ class App extends Component {
 						handlerSearchByName={handlerSearchByName}
 						searchByName={searchByName}
 						nameFilter={nameFilter}
+						loading={loading}
 					/>
 				} />
 				<Route path='/:id' render={routerProps =>
 					<Card
 						match={routerProps.match}
 						//charactersArr={charactersArr} - hacer el find de video nasiba
-						loading={this.state.loading}
+						loading={loading}
 					/>
 				} />
 			</Switch>

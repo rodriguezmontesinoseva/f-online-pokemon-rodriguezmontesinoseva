@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './styles.scss';
-
 import Pokemon from '../Pokemon';
 import PropTypes from 'prop-types';
 

@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
+//import PropTypes from 'prop-types';
 import './styles.scss';
 
 class Card extends Component {
     render() {
-        const { charactersArr, loading } = this.props;
-        const { id } = this.props.match.params;
-        const selCharacter = charactersArr[id - 1];
+        // const { charactersArr, loading } = this.props;
+        // const { id } = this.props.match.params;
+        // const selCharacter = charactersArr[id - 1];
+        const { loading } = this.props;
 
         return (
             <div className='card-container'>
