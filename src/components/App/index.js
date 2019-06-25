@@ -1,20 +1,20 @@
 
 import React, { Component } from 'react';
 import './styles.scss';
-import PokeList from '../PokeList';
-import Filter from '../Filter';
-//import { ENDPOINT } from '../services/arrPokemon'
+import { Route, Switch } from 'react-router-dom';
+import Home from '../Home';
+import Card from '../Card';
 
+// import PokeList from '../PokeList';
+// import Filter from '../Filter';
 
-//const ENDPOINT = '../../objPokemon.json'
-//const ENDPOINT = 'http://localhost:4000/results';
 
 class App extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			pokData: [],
-			isFetching: true,
+			loading: true,
 			searchByName: ''
 
 		}
@@ -45,7 +45,6 @@ class App extends Component {
 									} else {
 										evolutionPk = '';
 									}
-									console.log(detailPk.name);
 
 									//setea detalles del 2fetch y evolucion del 3fetch
 									this.setState(prevState => {
@@ -61,7 +60,7 @@ class App extends Component {
 
 												}
 											],
-											isFetching: false,
+											loading: false,
 
 										}
 									})
@@ -77,10 +76,6 @@ class App extends Component {
 
 	};
 
-
-
-
-
 	handlerSearchByName(event) {
 		const valueSearch = event.currentTarget.value;
 		this.setState({
@@ -88,44 +83,57 @@ class App extends Component {
 		})
 	}
 
-
-
 	componentDidMount() {
 		this.fetchPokemon();
-		//	console.log(`esto es pokdata ${this.state.pokData}`);
 	}
 
 	render() {
+		const handlerSearchByName = this.handlerSearchByName;
+		const searchByName = this.state.searchByName;
 		const nameFilter = this.state.pokData
 			.filter(element => {
 				return element.name.includes(this.state.searchByName)
 			})
 
 		return (
-			<div className='page-container'>
-				<header >
-					<h1 className="title">Pokemon</h1>
-				</header>
-
-				<main className='main__container'>
-					<Filter
-						searchByName={this.state.searchByName}
-						handlerSearchByName={this.handlerSearchByName}
+			<Switch>
+				<Route exact path='/' render={() =>
+					<Home
+						handlerSearchByName={handlerSearchByName}
+						searchByName={searchByName}
+						nameFilter={nameFilter}
 					/>
-					{this.state.isFetching
-						? <p>loading...</p>
-						: <PokeList
-							nameFilter={nameFilter}
-						/>
-					}
+				} />
+				<Route path='/:id' render={routerProps =>
+					<Card
+						match={routerProps.match}
+						//charactersArr={charactersArr} - hacer el find de video nasiba
+						loading={this.state.loading}
+					/>
+				} />
+			</Switch>
 
+			// <div className='page-container'>
+			// 	<header >
+			// 		<h1 className="title">Pokemon</h1>
+			// 	</header>
 
-				</main>
+			// 	<main className='main__container'>
+			// 		<Filter
+			// 			searchByName={this.state.searchByName}
+			// 			handlerSearchByName={this.handlerSearchByName}
+			// 		/>
+			// 		{this.state.loading
+			// 			? <p>loading...</p>
+			// 			: <PokeList
+			// 				nameFilter={nameFilter}
+			// 			/>
+			// 		}
 
-			</div>
+			// 	</main>
+			// </div>
 		);
 	}
 }
 
 export default App;
-
