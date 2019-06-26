@@ -2,6 +2,7 @@
   "name": "f-online-pokemon-rodriguezmontesinoseva",
   "version": "0.1.0",
   "private": true,
+  "homepage": "./",
   "dependencies": {
     "node": "^12.4.0",
     "node-sass": "^4.12.0",
